@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Control Plane Main Landing Page</title>
+	
+<!-- BOOTSTRAP STYLES-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+</head>
+
+<body class="pagestyle">
+
+<header>
+
+<div class="headerbox backimage">
+	<img src="img/serverroom.jpg" height="90" width="1350">
+	<span class="postleft">SECURE PORTAL</span>
+		<span class="postcenter">CONTROL PLANE</span>
+			<span class="postright">HPE.COM</span>
+</div>
+
+</header>
+
+<nav>
+
+	<div class="navbox">
+	
+		<h1> Quick Links </h1>
+		<h3> Link 1 </h3>
+	
+	</div>
+
+
+</nav>
+
+<main>
+
+	<div class="cenbox">
+		<div class="box1">
+			<h1> AUTHENTICATE <h1>
+		</div>
+		<div class="box2">
+		</div>
+		<div class="box3">
+			<div ng-app="myApp" ng-controller="myCtrl">
+
+				First Name : <input type="text" ng-model="firstname"><br>
+				Last Name : <input type="text" ng-model="lastname"><br>
+				<br>
+				Full Name : {{firstname + " " + lastname}}
+			</div>
+			<script>
+				var app = angular.module('myApp', []);
+				app.controller('myCtrl', function($scope) {
+				$scope.firstname="John"
+				$scope.lastname="Doe"
+				});
+			</script>
+
+		</div>
+		<div class="box4">
+		</div>
+		<div class="box5">
+		</div>
+		<div class="box6">
+		</div>
+		<div class="box7">
+		</div>
+		<div class="box8">
+		</div>
+	</div>
+
+</main>
+
+<footer>
+
+	<div class="footbox">
+
+		<img src="img/twitter.png" height="42" width="42">	
+		footer text here
+
+	</div>
+
+</footer>
+</body>
+
+</html>
