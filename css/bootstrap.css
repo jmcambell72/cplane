@@ -198,3 +198,9 @@
 	background-size: 100px 100px;
 	background-position: 0%0%;
 }
+
+.boxtxt {
+	font-size: 50%;
+	font-style: bold;
+	color: grey;
+}
