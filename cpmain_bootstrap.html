@@ -2,16 +2,21 @@
 
 <html ng-app="notesApp">
 
+<!-- Pull Angular JS lib from Google -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <head>
 
 <title>Control Plane Main Landing Page</title>
 
+
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
@@ -30,6 +35,11 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- jquery javascript for triggering events -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -63,6 +73,32 @@
 
 <body class="background" ng-controller="MainCtrl as ctrl">
 	
+<!-- alert javascript function -->
+
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        alert("Text: " + $("#test").text());
+    });
+    $("#btn2").click(function(){
+        alert("HTML: " + $("#test").html());
+    });
+});
+</script>
+
+<!-- jquery function to manage show/hide of content -->
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("#snow").hide();
+        $("#sysmsg").hide();
+        $("#snow").show();
+    });
+    $("#show").click(function(){
+        $("div").show();
+    });
+});
+</script>
 
 </head>
 
@@ -70,19 +106,20 @@
 <h1><span class="label label-default">Cloud Control Plane</span></h1>
 </header>
 
-<nav>
+<nav role="navigation">
 <ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a href="#">Home</a></li>
-	<li role="presentation"><a href="#">Profile</a></li>
-	<li role="presentation"><a href="#">Message</a></li>
+		<li role="presentation" id="show" class="active"><a href="#HOME">Home</a></li>
+	<li role="presentation"><a id="btn1" href="#CSA">CSA</a></li>
+	<li role="presentation"><a id="hide" href="#MESSAGE">Message</a></li>
 </ul>
 
 </nav>
 
 <main>
-	<br>
 
-	<div class="panel panel-default">
+<!-- id="sysmsg" is an ID tag that is called via the jquery function -->
+
+	<div id="sysmsg" class="panel panel-default">
   <div class="panel-heading">System Messages</div>
   <div class="panel-body">
     <div class="alert alert-danger" role="alert">Server Automation Under Maintenance</div>
@@ -91,7 +128,9 @@
 </div>
 </div>
 
-<div class="panel panel-default">
+<!-- id="show" is an ID tag that is called via the jquery function -->
+
+<div id="snow" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Your Service Now Tickets</h3>
       </div>
@@ -117,9 +156,9 @@
   		<h3 class="panel-title">Controller</h3>
   	</div>
     <div class="panel-body"> 
-    	
-    	<div class="alert alert-warning" role="alert">{{ctrl.message}}</div>
-    	    	
+    <ul>
+      <li role="presentation"><a id="btn1" href="#">{{ctrl.message}}</a></li>
+    </ul>  	
   	<br>
   	<script type="text/javascript">
   		angular.module('notesApp', [])
