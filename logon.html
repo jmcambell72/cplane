@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="cplanApp">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +51,7 @@
 
   </head>
 
-  <body>
+  <body ng-controller="MyAuth as auth">
 
     <div class="container">
         <div class="panel panel-default">
@@ -57,20 +60,23 @@
                 <form class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="name" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="passwd"required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="myFunc()">Sign in</button>
       </form>
       <div class="alert alert-danger" role="alert">
         Authorised Users Only</div>
     </div>
   </div>
+
+
+
     </div> <!-- /container -->
 
 <!-- Footer to the sign in screen -->
@@ -82,6 +88,24 @@
   </div>
 </nav>
 
+<!-- this is a test function just to provide a simulation of a login process. this should never go into production -->
+
+<script type="text/javascript">
+  var app = angular.module('cplanApp', []);
+    app.controller('MyAuth', function($scope) {
+      $scope.myFunc = function(){
+        var username = $scope.name;
+        var pswd = $scope.passwd;
+        if (username == "test@test.com") {
+          if (pswd == "test123") {
+            window.open('cpmain_bootstrap.html');
+          } else {
+            document.write ("error");
+            } 
+        }
+    }
+    });
+</script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
